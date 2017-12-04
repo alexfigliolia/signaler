@@ -16,9 +16,7 @@ var _clients = require('./clients');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var server = new _hapi2.default.Server();
-
-server.connection({ 'host': 'localhost', 'port': 80 });
+var server = new _hapi2.default.Server({ port: 9000, host: 'localhost' });
 
 var io = (0, _socket2.default)(server.listener, {
   'reconnect': true,
@@ -63,5 +61,5 @@ io.on('connection', function (socket) {
 
 // Start the server
 server.start(function () {
-  // console.log('Server running at:', server.info.uri);
+  console.log('Server running at:', server.info.uri);
 });

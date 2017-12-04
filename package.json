@@ -2,7 +2,7 @@
   "name": "webrtc",
   "version": "1.0.0",
   "description": "Starting point for webrtc ",
-  "main": "server.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "nodemon lib/index.js --exec babel-node --presets es2015,stage-2",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +11,7 @@
   "author": "Alex Figliolia",
   "license": "ISC",
   "dependencies": {
-    "hapi": "^8.0.0",
+    "hapi": "^17.1.1",
     "socket.io": "^2.0.4"
   },
   "devDependencies": {
