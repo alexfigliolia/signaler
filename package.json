@@ -1,0 +1,21 @@
+{
+  "name": "webrtc",
+  "version": "1.0.0",
+  "description": "Starting point for webrtc ",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js --exec babel-node --presets es2015,stage-2",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^8.0.0",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1"
+  }
+}
