@@ -5,8 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start-dev": "nodemon server.js --exec babel-node --presets es2015,stage-2",
-    "start": "node server.js --exec babel-node --presets es2015,stage-2",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "8.1.x"
   },
   "author": "",
   "license": "ISC",
