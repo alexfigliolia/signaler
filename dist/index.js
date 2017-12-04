@@ -20,15 +20,15 @@ var server = new _hapi2.default.Server();
 
 var port = process.env.PORT || 9000;
 
-server.connection({ 'port': port, routes: { cors: { origin: ['*'], credentials: true } } });
+server.connection({ 'port': port, routes: { cors: true } });
 
-// server.route({
-//   method: 'GET',
-//   path: '/',
-//   handler: function (request, reply) {
-//     reply('hello!');
-//   }
-// });
+server.route({
+  method: 'GET',
+  path: '/',
+  handler: function handler(request, reply) {
+    reply('hello!');
+  }
+});
 
 var io = (0, _socket2.default)(server.listener, {
   'reconnect': true,
