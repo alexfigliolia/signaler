@@ -37,6 +37,8 @@ var start = function () {
   };
 }();
 
+require('babel-polyfill');
+
 var _hapi = require('hapi');
 
 var _hapi2 = _interopRequireDefault(_hapi);
