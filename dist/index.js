@@ -17,8 +17,9 @@ var _clients = require('./clients');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var server = new _hapi2.default.Server();
+var port = process.env.PORT || 9000;
 
-server.connection({ 'host': 'localhost', 'port': 9000 });
+server.connection({ 'host': 'localhost', 'port': port });
 
 var io = (0, _socket2.default)(server.listener, {
   'reconnect': true,
