@@ -8,10 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel lib -d dist --presets es2015,stage-2"
   },
-  "engines": {
-    "node": "8.1.x"
-  },
-  "author": "",
+  "author": "Alex Figliolia",
   "license": "ISC",
   "dependencies": {
     "hapi": "^8.0.0",
