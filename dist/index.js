@@ -20,7 +20,7 @@ var server = new _hapi2.default.Server();
 
 var port = process.env.PORT || 9000;
 
-server.connection({ 'port': port, routes: { cors: true } });
+server.connection({ 'port': port, routes: { cors: { origin: ['*'], credentials: true } } });
 
 server.route({
   method: 'GET',
