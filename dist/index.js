@@ -64,6 +64,10 @@ io.on('connection', function (socket) {
     io.to(_clients.clients[answer.to].id).emit('answer', answer.answer);
   });
 
+  socket.on('error', function (err) {
+    console.log(err);
+  });
+
   socket.on('disconnect', function () {
     console.log('A user disconnected');
     (0, _clients.removeClient)(socket.piperChatID);
