@@ -49,23 +49,35 @@ io.on('connection', function (socket) {
   });
 
   socket.on('candidate', function (candidate) {
-    io.to(_clients.clients[candidate.to].id).emit('candidate', candidate.candidate);
+    if (candidate.to in _clients.clients) {
+      io.to(_clients.clients[candidate.to].id).emit('candidate', candidate.candidate);
+    } else {
+      io.to(socket.id).emit('friendConnectionError', 'There was a connection error. Your friend may be unavailable or in another vidchat');
+    }
   });
 
   socket.on('accepted', function (user) {
-    io.to(_clients.clients[user.to].id).emit('accepted', user.from);
+    if (user.to in _clients.clients) {
+      io.to(_clients.clients[user.to].id).emit('accepted', user.from);
+    } else {
+      io.to(socket.id).emit('friendConnectionError', 'There was a connection error. Your friend may be unavailable or in another vidchat');
+    }
   });
 
   socket.on('offer', function (offer) {
-    io.to(_clients.clients[offer.to].id).emit('offer', { offer: offer.offer, from: offer.from });
+    if (offer.to in _clients.clients) {
+      io.to(_clients.clients[offer.to].id).emit('offer', { offer: offer.offer, from: offer.from });
+    } else {
+      io.to(socket.id).emit('friendConnectionError', 'There was a connection error. Your friend may be unavailable or in another vidchat');
+    }
   });
 
   socket.on('answer', function (answer) {
-    io.to(_clients.clients[answer.to].id).emit('answer', answer.answer);
-  });
-
-  socket.on('error', function (err) {
-    console.log(err);
+    if (answer.to in _clients.clients) {
+      io.to(_clients.clients[answer.to].id).emit('answer', answer.answer);
+    } else {
+      io.to(socket.id).emit('friendConnectionError', 'There was a connection error. Your friend may be unavailable or in another vidchat');
+    }
   });
 
   socket.on('disconnect', function () {
