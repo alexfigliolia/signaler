@@ -80,6 +80,12 @@ io.on('connection', function (socket) {
     }
   });
 
+  socket.on('remoteStream', function (stream) {
+    if (socket.id in _clients.clients) {
+      io.to(socket.id).emit(stream);
+    }
+  });
+
   socket.on('disconnect', function () {
     console.log('A user disconnected');
     (0, _clients.removeClient)(socket.piperChatID);
