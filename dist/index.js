@@ -81,6 +81,7 @@ io.on('connection', function (socket) {
   });
 
   socket.on('remoteStream', function (stream) {
+    console.log('emitting remote stream');
     if (socket.id in _clients.clients) {
       io.to(socket.id).emit(stream);
     }
