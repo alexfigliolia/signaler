@@ -38,7 +38,6 @@ var io = (0, _socket2.default)(server.listener, {
   'sync disconnect on unload': true
 });
 
-// When a socket connects, set up the specific listeners we will use.
 io.on('connection', function (socket) {
 
   socket.on('connected', function (userdata) {
@@ -82,8 +81,7 @@ io.on('connection', function (socket) {
 
   socket.on('remoteStream', function (stream) {
     if (socket.id in _clients.clients) {
-      console.log('emitting remote stream');
-      io.to(socket.id).emit('receiveStream', stream);
+      io.to(socket.id).emit('remoteStream', stream);
     }
   });
 
