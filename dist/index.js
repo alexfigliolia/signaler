@@ -88,8 +88,6 @@ io.on('connection', function (socket) {
   socket.on('endChat', function (otherGuy) {
     if (otherGuy in _clients.clients) {
       io.to(_clients.clients[otherGuy].id).emit('endChat', 'end the chat');
-    } else {
-      io.to(socket.id).emit('friendConnectionError', 'There was a connection error. Your friend may be unavailable or in another vidchat');
     }
   });
 
