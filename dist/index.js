@@ -87,6 +87,7 @@ io.on('connection', function (socket) {
 
   socket.on('endChat', function (otherGuy) {
     if (otherGuy in _clients.clients) {
+      console.log(socket.id + ' ended chat with ' + otherGuy);
       io.to(_clients.clients[otherGuy].id).emit('endChat', 'end the chat');
     }
   });
