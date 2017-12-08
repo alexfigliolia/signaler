@@ -17,9 +17,7 @@ var _clients = require('./clients');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var server = new _hapi2.default.Server();
-
 var port = process.env.PORT || 9000;
-
 server.connection({ host: '0.0.0.0', port: port, routes: { cors: true } });
 
 server.route({
@@ -80,16 +78,11 @@ io.on('connection', function (socket) {
   });
 
   socket.on('remoteStream', function (stream) {
-    if (socket.id in _clients.clients) {
-      io.to(socket.id).emit('remoteStream', stream);
-    }
+    if (socket.id in _clients.clients) io.to(socket.id).emit('remoteStream', stream);
   });
 
   socket.on('endChat', function (otherGuy) {
-    if (otherGuy in _clients.clients) {
-      console.log(socket.id + ' ended chat with ' + otherGuy);
-      io.to(_clients.clients[otherGuy].id).emit('endChat', 'end the chat');
-    }
+    if (otherGuy in _clients.clients) io.to(_clients.clients[otherGuy].id).emit('endChat', 'end the chat');
   });
 
   socket.on('disconnect', function () {
