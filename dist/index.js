@@ -63,7 +63,9 @@ io.on('connection', function (socket) {
 
   socket.on('offer', function (offer) {
     if (offer.to in _clients.clients) {
-      io.to(_clients.clients[offer.to].id).emit('offer', { offer: offer.offer, from: offer.from });
+      var image = null;
+      if (offer.fromImage) image = offer.fromImage;
+      io.to(_clients.clients[offer.to].id).emit('offer', { offer: offer.offer, from: offer.from, image: image });
     } else {
       io.to(socket.id).emit('friendConnectionError', 'There was a connection error. Your friend may be unavailable or in another vidchat');
     }
