@@ -87,6 +87,10 @@ io.on('connection', function (socket) {
     if (otherGuy in _clients.clients) io.to(_clients.clients[otherGuy].id).emit('endChat', 'end the chat');
   });
 
+  socket.on('busy', function (otherGuy) {
+    if (otherGuy in _clients.clients) io.to(_clients.clients[otherGuy].id).emit('busy', 'This user is in another chat');
+  });
+
   socket.on('disconnect', function () {
     console.log('A user disconnected');
     (0, _clients.removeClient)(socket.piperChatID);
